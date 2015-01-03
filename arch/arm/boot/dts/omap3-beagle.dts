@@ -251,6 +251,21 @@
 #include "twl4030.dtsi"
 #include "twl4030_omap3.dtsi"
 
+&i2c2 {
+	status = "okay";
+	clock-frequency = <400000>;
+	ds1307: rtc@68 {
+		compatible = "dallas,ds1307";
+		reg = <0x68>;
+	};
+	pcf8575: gpio@24 {
+		compatible = "nxp,pcf8575";
+		reg = <0x24>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+};
+
 &i2c3 {
 	clock-frequency = <100000>;
 };
