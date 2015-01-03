@@ -39,7 +39,24 @@
 };
 
 &i2c2 {
+	status = "okay";
 	clock-frequency = <400000>;
+	ds1307: rtc@68 {
+		compatible = "dallas,ds1307";
+		reg = <0x68>;
+	};
+	tca6416: gpio@21 {
+		compatible = "ti,tca6416";
+		reg = <0x21>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+	pcf8575: gpio@24 {
+		compatible = "nxp,pcf8575";
+		reg = <0x24>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
 };
 
 &i2c3 {
